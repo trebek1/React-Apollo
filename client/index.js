@@ -12,8 +12,12 @@ import SongList from './components/SongList';
 // could put config into {}
 // assumes /graphql for graphql client 
 
-//record ID has to be unique 
+// normalization with dataIdFromObject 
+// record ID has to be unique 
 // all queries need to return the IDs 
+// using this way we do not need to make followup queries 
+// this cuts the number of calls in half that are required 
+
 const client = new ApolloClient({
   dataIdFromObject: o => o.id
 });

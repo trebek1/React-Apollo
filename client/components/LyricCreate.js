@@ -38,6 +38,8 @@ class LyricCreate extends Component {
 	}
 }
 
+// added likes to keep from erroring --> keep track of resources --> apollo issue
+
 const mutation = gql`
 	mutation CreateLyric($content: String, $id: ID){
 	  addLyricToSong(content: $content, songId: $id){
@@ -46,6 +48,7 @@ const mutation = gql`
 	    lyrics {
 	      id
 	      content
+	      likes
 	    }
 	  }
 	}

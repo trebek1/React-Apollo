@@ -5,6 +5,7 @@ import ApolloClient from 'apollo-client'; // making request for data and storing
 import { ApolloProvider } from 'react-apollo';
 import App from './components/App';
 import SongCreate from './components/SongCreate';
+import './style/style.css';
 
 
 import SongList from './components/SongList';

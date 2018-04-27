@@ -1,3 +1,4 @@
+import './style/style.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
@@ -5,15 +6,17 @@ import ApolloClient from 'apollo-client'; // making request for data and storing
 import { ApolloProvider } from 'react-apollo';
 import App from './components/App';
 import SongCreate from './components/SongCreate';
-import './style/style.css';
-
-
+import SongDetail from './components/SongDetail';
 import SongList from './components/SongList';
 
 // could put config into {}
 // assumes /graphql for graphql client 
 
-const client = new ApolloClient({});
+//record ID has to be unique 
+// all queries need to return the IDs 
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id
+});
 
 const Root = () => {
   return <ApolloProvider client={client}>
@@ -21,6 +24,7 @@ const Root = () => {
   		<Route path="/" component={App}>
   			<IndexRoute component={SongList} />
   			<Route path="songs/new" component={SongCreate} />
+        <Route path="songs/:id" component={SongDetail} />
   		</Route>
   	</Router>
   </ApolloProvider>
